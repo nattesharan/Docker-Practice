@@ -1,0 +1,30 @@
+create a file named psql_user.txt with the user for postgres
+
+touch psql_user.txt
+
+enter the username in the file and save it
+
+Lets create our first secret
+
+docker secret create {SECRET_NAME} {SECRET_FILE}
+
+docker secret create psql_user psql_user.txt
+
+Lets create the second secret but this time instead of file lets read the secret from command line
+
+echo "myDBPassword" | docker secret create psql_password -
+
+Now once the secrets are created we can use
+
+docker secret ls to list the secrets
+
+docker secret --help for more
+
+No create a service
+
+docker service create --name psql --secret psql_user --secret psql_password --replicas 1 
+-e POSTGRES_USER_FILE=/run/secrets/psql_user -e POSTGRES_PASSWORD_FILE=/run/secrets/psql_password 
+--constraint node.role==manager postgres
+
+Once the service is created we can login to container and go to the paths /run/secrets/psql_user and /run/secrets/psql_password to 
+view the secrets
