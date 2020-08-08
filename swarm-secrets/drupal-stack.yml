@@ -16,7 +16,7 @@ services:
     postgres_db:
         image: postgres
         volumes:
-            - psql-data:/var/lib/postgresql/data
+            - psql_data:/var/lib/postgresql/data
         secrets:
             - psql_user
             - psql_password
