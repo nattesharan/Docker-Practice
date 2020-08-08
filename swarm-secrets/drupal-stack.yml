@@ -25,11 +25,11 @@ services:
             POSTGRES_PASSWORD_FILE: /run/secrets/psql_password
         
 volumes:
-    - drupal-modules
-    - drupal-profiles
-    - drupal-sites
-    - drupal-themes
-    - psql_data
+    drupal-modules:
+    drupal-profiles:
+    drupal-sites:
+    drupal-themes:
+    psql_data:
 secrets:
     psql_user:
         file: ./psql_user.txt
