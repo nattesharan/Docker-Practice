@@ -1,0 +1,30 @@
+We do want to have separate compose files for local, test and production
+Eg: In local we want to have file based secrets abut in production we want external secrets
+Eg: In dev and production we need volumes but in test we dont need them
+
+SO docker has a concept of overiding files
+
+The base file is docker-compose.yml
+
+for dev we can run the command 
+
+# docker-compose up
+
+By default it checks for docker-compose.yml and takes the overide file as docker-compose.override.yml
+
+For testing environment we run
+# docker-compose -f docker-compose.yml -f docker-compose.prod.yml up
+
+For production if want to run with docker-compose in production(not recommended as docker-compose is not for production use)
+
+# docker-compose -f docker-compose.yml -f docker-compose.prod.yml up
+
+Use docker stack for production
+
+1)First generate a config file by using docker-compose config and output it to output.yml
+
+docker-compose -f docker-compose.yml -f docker-compose.prod.yml config > output.yml
+
+2) We can use the output.yml and deploy using docker-stack
+
+docker stack deploy -c output.yml name
