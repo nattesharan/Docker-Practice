@@ -1,0 +1,15 @@
+version: "3.4"
+
+services:
+    web:
+        image: nginx
+        # for stack and compose files we use the same below
+        healthcheck:
+            test: ["CMD", "curl", "-f", "localhost"]
+            interval: 5s
+            retries: 3
+            timeout: 10s
+            start_period: 15s
+        ports:
+            - 80:80
+
