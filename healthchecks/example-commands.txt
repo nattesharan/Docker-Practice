@@ -1,0 +1,3 @@
+docker run --health-cmd="curl -f localhost:9200/_cluster/health || false" \
+           --health-interval=5s --health-timeout=3s
+           --health-retries=3 --health-start-period=10s elasticsearch:2
