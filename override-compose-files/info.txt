@@ -13,7 +13,7 @@ for dev we can run the command
 By default it checks for docker-compose.yml and takes the overide file as docker-compose.override.yml
 
 For testing environment we run
-# docker-compose -f docker-compose.yml -f docker-compose.prod.yml up
+# docker-compose -f docker-compose.yml -f docker-compose.test.yml up
 
 For production if want to run with docker-compose in production(not recommended as docker-compose is not for production use)
 

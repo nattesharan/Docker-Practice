@@ -1,0 +1,51 @@
+kubectl version
+enter the above command to see if kubernetes is installed properly.
+
+Pod is the unit of kubernetes where one or more containers run.
+
+A deployment is a spec of pod
+
+Service provides a way to interact with the pods
+
+First lets create a deployment to run nginx...
+
+kubectl create deployment nginx --image nginx
+
+The above command creates a deployment with single pod
+
+kubectl get pods -> to see the list of pods
+
+kubectl get all
+
+
+kubectl delete deployment nginx
+
+
+#### Create replicas for pod
+
+kubectl create deployment my-apache --image httpd
+
+kubectl scale deployment my-apache --replicas 3 or kubectl scale deploy/my-apache --replicas 3 or 
+kubectl scale deploy my-apache --replicas 3
+
+
+kubectl get pods --show-labels
+
+kubectl get pods -w   --> Watch command is common in all linux log systems.. it polls the command 
+
+
+kubectl logs deployment/my-apache --follow --tail 1
+
+to see logs of all the pods at same time
+kubectl logs deployment/my-apache -l run=my-apache --follow --tail 1
+
+kubectl logs podname
+
+if multiple containers in pod
+kubectl logs podname -c container-name
+
+
+describe pod
+kubectl describe pod podname
+
+kubectl delete pod podname or kubectl delete pod/podname
